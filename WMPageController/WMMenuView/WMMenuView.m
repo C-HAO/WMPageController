@@ -65,6 +65,10 @@ static NSInteger const WMBadgeViewTagOffset = 1212;
             frame;
         });
     }
+    
+    if ([self.superview isKindOfClass:[UINavigationBar class]]) {
+        self.center = CGPointMake(self.superview.frame.size.width / 2.f, self.superview.frame.size.height / 2);
+    }
 }
 
 - (void)setProgressViewCornerRadius:(CGFloat)progressViewCornerRadius {
