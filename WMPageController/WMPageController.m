@@ -413,7 +413,11 @@ static NSInteger const kWMControllerCountUndefined = -1;
         _menuViewFrame = [self.dataSource pageController:self preferredFrameForMenuView:self.menuView];
     } else {
         CGFloat originY = (self.showOnNavigationBar && self.navigationController.navigationBar) ? 0 : CGRectGetMaxY(self.navigationController.navigationBar.frame);
-        _menuViewFrame = CGRectMake(0, originY, self.view.frame.size.width, 30.0f);
+        if (self.showOnNavigationBar && self.navigationController.navigationBar) {
+            _menuViewFrame = CGRectMake(self.view.frame.size.width / 4, originY, self.view.frame.size.width / 2, 30.0f);
+        }else {
+            _menuViewFrame = CGRectMake(0, originY, self.view.frame.size.width, 30.0f);
+        }
     }
     if ([self.dataSource respondsToSelector:@selector(pageController:preferredFrameForContentView:)]) {
         _contentViewFrame = [self.dataSource pageController:self preferredFrameForContentView:self.scrollView];
