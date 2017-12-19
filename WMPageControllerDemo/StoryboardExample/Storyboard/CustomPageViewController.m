@@ -15,15 +15,16 @@
 
 @implementation CustomPageViewController
 - (NSArray<NSString *> *)titles {
-    return @[@"你好", @"支持我", @"点赞"];
+    return @[@"你好", @"支持我"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.menuItemWidth = 60;
+        self.menuItemWidth = 50;
         self.menuViewStyle = WMMenuViewStyleLine;
         self.titleSizeSelected = 15.0;
+        
     }
     return self;
 }
@@ -31,6 +32,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"123123" style:(UIBarButtonItemStylePlain) target:self action:nil];
+    self.menuView.layoutMode = WMMenuViewLayoutModeCenter;
+    self.showOnNavigationBar = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.menuView refreshContenOffset];
 }
 
 - (void)didReceiveMemoryWarning {

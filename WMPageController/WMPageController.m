@@ -462,6 +462,7 @@ static NSInteger const kWMControllerCountUndefined = -1;
     menuView.progressViewIsNaughty = self.progressViewIsNaughty;
     menuView.progressViewCornerRadius = self.progressViewCornerRadius;
     menuView.showOnNavigationBar = self.showOnNavigationBar;
+    
     if (self.titleFontName) {
         menuView.fontName = self.titleFontName;
     }
@@ -469,7 +470,7 @@ static NSInteger const kWMControllerCountUndefined = -1;
         menuView.lineColor = self.progressColor;
     }
     if (self.showOnNavigationBar && self.navigationController.navigationBar) {
-        self.navigationItem.titleView = menuView;
+        [self.navigationController.navigationBar addSubview:menuView];
     } else {
         [self.view addSubview:menuView];
     }
